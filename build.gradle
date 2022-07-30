@@ -56,8 +56,8 @@ subprojects {
         testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
         // QueryDSL
-        implementation "com.querydsl:querydsl-jpa:${queryDslVersion}"
-        implementation "com.querydsl:querydsl-apt:${queryDslVersion}"
+//        implementation "com.querydsl:querydsl-jpa:${queryDslVersion}"
+//        implementation "com.querydsl:querydsl-apt:${queryDslVersion}"
 
         implementation 'org.springframework.boot:spring-boot-starter-data-redis:2.3.9.RELEASE'
     }
@@ -82,7 +82,7 @@ project(':fast-grill-admin') {
     jar { enabled = false }
 
     dependencies {
-        compile project(':fast-grill-core') // 컴파일 시 fast-grill-core project 로딩
+        implementation project(':fast-grill-core') // 컴파일 시 fast-grill-core project 로딩
         implementation 'org.springframework.boot:spring-boot-starter-web'
     }
 }
@@ -92,7 +92,7 @@ project(':fast-grill-api') {
     jar { enabled = false }
 
     dependencies {
-        compile project(':fast-grill-core') // 컴파일 시 core project 로딩
+        implementation project(':fast-grill-core') // 컴파일 시 core project 로딩
         implementation 'org.springframework.boot:spring-boot-starter-web'
     }
 }
@@ -102,7 +102,7 @@ project(':fast-grill-batch') {
     jar { enabled = false }
 
     dependencies {
-        compile project(':fast-grill-core') // 컴파일 시 fast-grill-core project 로딩
+        implementation project(':fast-grill-core') // 컴파일 시 fast-grill-core project 로딩
     }
 }
 
@@ -111,6 +111,6 @@ project(':fast-grill-consumer') {
     jar { enabled = false }
 
     dependencies {
-        compile project(':fast-grill-core') // 컴파일 시 fast-grill-core project 로딩
+        implementation project(':fast-grill-core') // 컴파일 시 fast-grill-core project 로딩
     }
 }
