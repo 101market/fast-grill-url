@@ -1,6 +1,7 @@
-rootProject.name = 'url-shortener'
+rootProject.name = 'fast-grill-url'
 
-include 'shortenerurl-admin'
-include 'shortenerurl-api'
-include 'shortenerurl-consumer'
-include 'shortenerurl-core'
+include 'fast-grill-admin'
+include 'fast-grill-api'
+include 'fast-grill-consumer'
+include 'fast-grill-core'
+include 'fast-grill-batch'

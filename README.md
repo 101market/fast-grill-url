@@ -1,4 +1,4 @@
-# url-shortener
+# fast-grill-url
 ### Module
 ```mermaid
 flowchart TB
