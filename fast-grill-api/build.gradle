@@ -7,8 +7,6 @@ repositories {
 }
 
 dependencies {
-    // swagger
-    implementation "org.springdoc:springdoc-openapi-ui:1.5.9"
 }
 
 test {
