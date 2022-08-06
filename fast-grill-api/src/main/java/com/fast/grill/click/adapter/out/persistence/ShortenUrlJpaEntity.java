@@ -1,13 +1,8 @@
 package com.fast.grill.click.adapter.out.persistence;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.ZonedDateTime;
 
 
@@ -21,9 +16,26 @@ public class ShortenUrlJpaEntity {
     @GeneratedValue
     private Long id;
 
+    // unique index 추가하기
     private String shortenToken;
 
     private String originUrl;
 
+    @Enumerated(EnumType.STRING)
+    private Status status;
+
     private ZonedDateTime expiredAt;
+
+    private Long thresholdRequestCount;
+
+    public boolean isEnable(){
+        return status == Status.ENABLE;
+    }
+
+    @Getter
+    @RequiredArgsConstructor
+    public enum Status {
+        ENABLE("활성화"), DISABLE("비활성화");
+        private final String description;
+    }
 }
