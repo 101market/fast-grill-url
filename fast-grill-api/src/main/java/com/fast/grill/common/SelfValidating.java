@@ -12,6 +12,7 @@ public abstract class SelfValidating<T> {
     validator = factory.getValidator();
   }
 
+// TODO: 주석 한글로 변경하기
   /**
    * Evaluates all Bean Validations on the attributes of this
    * instance.
