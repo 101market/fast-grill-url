@@ -1,5 +1,6 @@
 package com.fast.grill.click.adapter.out.persistence;
 
+import com.fast.grill.common.entity.AbstractEntity;
 import lombok.*;
 
 import javax.persistence.*;
@@ -11,7 +12,7 @@ import java.time.ZonedDateTime;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ShortenUrlJpaEntity {
+public class ShortenUrlJpaEntity extends AbstractEntity {
     @Id
     @GeneratedValue
     private Long id;
