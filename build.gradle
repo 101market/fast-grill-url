@@ -1,7 +1,8 @@
 buildscript {
     ext {
         springBootVersion = '2.7.1'
-        queryDslVersion = "5.0.0"
+//        queryDslVersion = "5.0.0"
+//        spockVersion = "2.2-M3-groovy-4.0"
     }
     repositories {
         mavenCentral()
@@ -15,6 +16,7 @@ buildscript {
 // 하위 모든 프로젝트 공통 세팅
 subprojects {
     apply plugin: 'java'
+    apply plugin: 'groovy'
     apply plugin: 'idea'
     apply plugin: 'org.springframework.boot'
     apply plugin: 'io.spring.dependency-management'
@@ -54,6 +56,13 @@ subprojects {
         runtimeOnly 'com.h2database:h2'
         runtimeOnly 'mysql:mysql-connector-java'
         testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+//        TODO: 변수 참조 오류 ㅅ수정 (query dsl도 점검)
+//       testImplementation 'org.spockframework:spock-core:{spockVersion}'
+//        testImplementation 'org.spockframework:spock-spring:{spockVersion}'
+        testImplementation 'org.spockframework:spock-core:2.2-M3-groovy-4.0'
+        testImplementation 'org.spockframework:spock-spring:2.2-M3-groovy-4.0'
+
 
         // QueryDSL
 //        implementation "com.querydsl:querydsl-jpa:${queryDslVersion}"

@@ -21,13 +21,11 @@ flowchart TB
 ### Click Flow 
 ```mermaid
 flowchart TD
-    A[shorten-url-클릭] --> H{shorten-url이-공개되어있는가}
-    G -->|Yes| E[origin-url-redirect]
-    H{url이-공개되어있는가} --> |YES| G{클릭제한이-있는가}
-    H --> |NO| D[404-notfound]
-    G{클릭-제한이-있는가} --> |NO| B{ttl이-만료되었는가}
+    A[shorten-url-클릭] --> G{url이-활성화되었는가}
+    G -->|NO| E[404-notfound]
+    G{url이-활성화되었는가} --> |YES| B{ttl이-만료되었는가}
     B -->|Yes| D[404-notfound]
-    B{ttl이-만료되었는가} --> |NO| C{호출빈도-제한에-걸렸는가}
+    B{ttl이-만료되었는가?} --> |NO| C{호출빈도-제한에-걸렸는가}
     C -->|Yes| D[404-notfound]
     C -->|NO| E[origin-url-redirect]
 ```
