@@ -27,36 +27,33 @@ services:
     ports:
       - 6379:6379
   zookeeper:
-    image: confluentinc/cp-zookeeper:7.1.1 #latest
     hostname: zookeeper
-    container_name: zookeeper
+    image: zookeeper:3.4.9            #image file, 없으면 hub에서 자동으로 가져옴.
     ports:
-      - "2181:2181"
-    networks:
-      - localnet
-    environment:
-      ZOOKEEPER_CLIENT_PORT: 2181
-      ZOOKEEPER_TICK_TIME: 2000
+      - "2184:2184"
+    environment:                      #환경 변수 설정
+      ZOO_MY_ID: 4
+      ZOO_PORT: 2184
+      ZOO_SERVER: server.4=zookeeper:2888:3888
+    volumes:                          #디렉토리 마운트file
+      - ./lonekafka/zookeeper/data:/data
+      - ./lonekafka/zookeeper/datalog:/datalog
 
-  broker:
-    image: confluentinc/cp-kafka:7.1.1 #latest
-    hostname: broker
-    container_name: broker
-    depends_on:
-      - zookeeper
+
+  kafka:
+    hostname: lonekafka
+    image: confluentinc/cp-kafka:5.5.1
     ports:
-      - "29092:29092"
-      - "9092:9092"
-    networks:
-      - localnet
+      - "9095:9095"
     environment:
-      KAFKA_BROKER_ID: 1
-      KAFKA_ZOOKEEPER_CONNECT: 'zookeeper:2181'
-      KAFKA_LISTENERS: LISTENER_1://broker:29092,LISTENER_2://broker:9092
-      KAFKA_ADVERTISED_LISTENERS: LISTENER_1://broker:29092,LISTENER_2://localhost:9092
-      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: LISTENER_1:PLAINTEXT,LISTENER_2:PLAINTEXT
-      KAFKA_INTER_BROKER_LISTENER_NAME: LISTENER_1
-      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
-      KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
-      CONFLUENT_SUPPORT_CUSTOMER_ID: 'anonymous'
-      KAFKA_DELETE_TOPIC_ENABLE: "true"
+      KAFKA_ADVERTISED_LISTENERS: LISTENER_DOCKER_INTERNAL://lonekafka:19095,LISTENER_DOCKER_EXTERNAL://${DOCKER_HOST_IP:-127.0.0.1}:9095
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: LISTENER_DOCKER_INTERNAL:PLAINTEXT,LISTENER_DOCKER_EXTERNAL:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: LISTENER_DOCKER_INTERNAL
+      #KAFKA_ADVERTISED_HOST_NAME: host.docker.internal
+      KAFKA_ZOOKEEPER_CONNECT: "zookeeper:2184"
+      KAFKA_BROKER_ID: 4
+
+    volumes:
+      - ./lonekafka/data:/var/lib/kafka/data
+    depends_on:               #zookeeper 가 생성된 후에 lonekafka를 설치한다.
+      - zookeeper
