@@ -26,4 +26,4 @@ logging:
 kafka:
   bootstrapAddress: localhost:9092
   topic:
-    name: click-event
+    click: fastgrill.click
