@@ -12,8 +12,8 @@ curl -X GET "localhost:8080/api/RXad41E"
 
 #### 3. kafka drop 확인하기 
 http://localhost:9001/
+![kafdrop-screenshot](./kafdrop-screenshot.png)
 
-![이미지](https://github.com/101market/fast-grill-url/blob/master/kafdrop-screenshot.png)
 
 ### Module
 ```mermaid
