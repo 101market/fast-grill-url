@@ -17,6 +17,7 @@ import org.springframework.kafka.support.serializer.JsonSerializer;
 @Configuration
 public class KafkaProducerConfig {
 
+    // FIXME: application.yml 참조 오류 수정
     // @Value(value = "${kafka.bootstrapAddress}")
     private String bootstrapAddress = "localhost:9092";
 
