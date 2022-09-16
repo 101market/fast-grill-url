@@ -1,6 +1,5 @@
 package com.fast.grill.click.adapter.out.persistence;
 
-import com.fast.grill.common.entity.AbstractEntity;
 import lombok.*;
 
 import javax.persistence.*;
@@ -10,9 +9,10 @@ import java.time.ZonedDateTime;
 @Entity
 @Table(name = "shorten_url")
 @Data
+@EqualsAndHashCode(callSuper = true) // TODO: 인텔리제이 주도 개발로 썼지만, 뭔지 알고 쓰기
 @AllArgsConstructor
 @NoArgsConstructor
-public class ShortenUrlJpaEntity extends AbstractEntity {
+public class ShortenUrlJpaJpaEntity extends AbstractJpaEntity {
     @Id
     @GeneratedValue
     private Long id;

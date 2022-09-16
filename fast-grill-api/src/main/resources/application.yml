@@ -6,12 +6,18 @@ spring:
     username: sa
     password:
     driver-class-name: org.h2.Driver
+    data: data.sql
+    initialization-mode: always
   jpa:
     hibernate:
       ddl-auto: create
     properties:
       hibernate:
         format_sql: true
+    defer-datasource-initialization: true
+  sql:
+    init:
+      mode: always
   h2:
     console:
       enabled: true
