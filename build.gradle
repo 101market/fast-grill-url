@@ -1,125 +1,27 @@
-buildscript {
-    ext {
-        springBootVersion = '2.7.1'
-//        queryDslVersion = "5.0.0"
-//        spockVersion = "2.2-M3-groovy-4.0"
-    }
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-        classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
-        classpath "io.spring.gradle:dependency-management-plugin:1.0.11.RELEASE"
-    }
+plugins {
+    id 'org.springframework.boot' version '2.7.1'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
 }
 
-// 하위 모든 프로젝트 공통 세팅
+group = 'com.fast.grill'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
 subprojects {
-    apply plugin: 'java'
+    apply plugin: 'java-library'
     apply plugin: 'groovy'
-    apply plugin: 'idea'
-    apply plugin: 'org.springframework.boot'
-    apply plugin: 'io.spring.dependency-management'
-
-    group 'org.example'
-    version '1.0-SNAPSHOT'
-
-    sourceCompatibility = '17'
-    targetCompatibility = '17'
-    compileJava.options.encoding = 'UTF-8'
-
-    repositories {
-        mavenCentral()
-    }
-
-    // 하위 모듈에서 공통으로 사용하는 세팅 추가
-    dependencies {
-        implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-        implementation 'org.springframework.boot:spring-boot-starter-web'
-        implementation 'org.springframework.boot:spring-boot-starter-validation' // NotEmpty
-
-        // TODO:   mysql setting
-        //	implementation 'org.flywaydb:flyway-core:7.10.0'
-        compileOnly 'org.projectlombok:lombok'
-
-        // MapStruct
-        implementation 'org.mapstruct:mapstruct:1.4.2.Final'
-        annotationProcessor "org.mapstruct:mapstruct-processor:1.4.2.Final"
-        annotationProcessor(
-                'org.projectlombok:lombok',
-                'org.projectlombok:lombok-mapstruct-binding:0.1.0'
-        )
-
-        implementation 'com.google.guava:guava:28.2-jre'
-        implementation 'org.apache.commons:commons-lang3:3.9'
-
-        runtimeOnly 'com.h2database:h2'
-        runtimeOnly 'mysql:mysql-connector-java'
-        testImplementation 'org.springframework.boot:spring-boot-starter-test'
-
-//        TODO: 변수 참조 오류 ㅅ수정 (query dsl도 점검)
-//       testImplementation 'org.spockframework:spock-core:{spockVersion}'
-//        testImplementation 'org.spockframework:spock-spring:{spockVersion}'
-        testImplementation 'org.spockframework:spock-core:2.2-M3-groovy-4.0'
-        testImplementation 'org.spockframework:spock-spring:2.2-M3-groovy-4.0'
-
-
-        // QueryDSL
-//        implementation "com.querydsl:querydsl-jpa:${queryDslVersion}"
-//        implementation "com.querydsl:querydsl-apt:${queryDslVersion}"
-
-        implementation 'org.springframework.boot:spring-boot-starter-data-redis:2.3.9.RELEASE'
-    }
-
-    test {
-        useJUnitPlatform()
-    }
-}
-
-project(':fast-grill-core') {
-    // 공통 코드
-
-    bootJar { enabled = false } // core 은 bootJar 로 패키징 할 필요 없음
-    jar { enabled = true }
-
-    dependencies {
-    }
-}
-
-project(':fast-grill-admin') {
-    bootJar { enabled = true }
-    jar { enabled = false }
-
-    dependencies {
-        implementation project(':fast-grill-core') // 컴파일 시 fast-grill-core project 로딩
-        implementation 'org.springframework.boot:spring-boot-starter-web'
-    }
-}
-
-project(':fast-grill-api') {
-    bootJar { enabled = true }
-    jar { enabled = false }
-
-    dependencies {
-        implementation project(':fast-grill-core') // 컴파일 시 core project 로딩
-        implementation 'org.springframework.boot:spring-boot-starter-web'
-    }
-}
-
-project(':fast-grill-batch') {
-    bootJar { enabled = true }
-    jar { enabled = false }
-
-    dependencies {
-        implementation project(':fast-grill-core') // 컴파일 시 fast-grill-core project 로딩
-    }
-}
-
-project(':fast-grill-consumer') {
-    bootJar { enabled = true }
-    jar { enabled = false }
-
-    dependencies {
-        implementation project(':fast-grill-core') // 컴파일 시 fast-grill-core project 로딩
-    }
 }
