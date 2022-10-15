@@ -1,5 +1,17 @@
 plugins {
+    id 'org.springframework.boot' version '2.7.1'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
+}
+
+group = 'com.fast.grill'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
 }
 
 repositories {
@@ -7,11 +19,19 @@ repositories {
 }
 
 dependencies {
-//   TODO: consumer에서도 사용될 텐데, 어떻게 처리할지 고민 필ㅛ 
-    implementation 'org.springframework.kafka:spring-kafka:2.9.0'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor(
+            'org.projectlombok:lombok',
+            'org.projectlombok:lombok-mapstruct-binding:0.1.0'
+    )
+
+    implementation project(':fast-grill-core')
 }
 
 test {
     useJUnitPlatform()
 }
-

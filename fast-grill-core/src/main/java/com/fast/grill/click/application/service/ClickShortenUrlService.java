@@ -1,10 +1,10 @@
 package com.fast.grill.click.application.service;
 
 import com.fast.grill.click.adapter.out.messagebroker.ClickEvent;
-import com.fast.grill.click.application.port.ClickEventProducerPort;
 import com.fast.grill.click.application.port.in.ClickShortenUrlCommand;
 import com.fast.grill.click.application.port.in.ClickShortenUrlUseCase;
 import com.fast.grill.click.application.port.out.LoadShortenUrlPort;
+import com.fast.grill.click.application.port.ClickEventProducerPort;
 import com.fast.grill.click.domain.ClickUrl;
 import com.fast.grill.common.UseCase;
 import lombok.RequiredArgsConstructor;

@@ -10,7 +10,6 @@ public class BaseException extends RuntimeException {
     private ErrorCode errorCode;
     private String message;
 
-
     public BaseException(ErrorCode errorCode) {
         this.errorCode = errorCode;
         this.message = null;
@@ -23,6 +22,5 @@ public class BaseException extends RuntimeException {
         } else {
             return String.format("%s. %s", errorCode.getMessage(), message);
         }
-
     }
 }

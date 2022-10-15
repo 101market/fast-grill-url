@@ -1,7 +1,7 @@
 package com.fast.grill.click.application.service.validator;
 
-import com.fast.grill.click.application.service.ClickValidator;
 import com.fast.grill.click.application.service.exception.ClosedUrlClickException;
+import com.fast.grill.click.application.service.ClickValidator;
 import com.fast.grill.click.domain.ClickUrl;
 import com.fast.grill.common.UseCase;
 

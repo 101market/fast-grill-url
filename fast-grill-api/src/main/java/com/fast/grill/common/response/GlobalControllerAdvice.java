@@ -1,7 +1,8 @@
-package com.fast.grill.common.exception;
+package com.fast.grill.common.response;
 
+import com.fast.grill.common.exception.BaseException;
+import com.fast.grill.common.exception.ErrorCode;
 import com.fast.grill.common.interceptor.CommonHttpRequestInterceptor;
-import com.fast.grill.common.response.Response;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.catalina.connector.ClientAbortException;
 import org.jboss.logging.MDC;
