@@ -4,12 +4,15 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
-import java.time.ZonedDateTime;
+import java.io.Serializable;
+import java.time.Instant;
 
 @Getter
 @RequiredArgsConstructor
 @Builder
-public class ClickUrl {
+public class ClickUrl implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     private String originUrl;
 
     private boolean enable;
@@ -23,8 +26,8 @@ public class ClickUrl {
     }
 
     public boolean isExpired() {
-        ZonedDateTime expiredAt = thresholdContract.getExpiredAt();
-        return expiredAt.isBefore(ZonedDateTime.now());
+        var expiredAt = thresholdContract.getExpiredAt();
+        return expiredAt.isBefore(Instant.now());
     }
 
     public boolean isExceedThresholdCount(long accumulatedRequestCount) {

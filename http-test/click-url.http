@@ -1,0 +1,3 @@
+### Shorten url
+GET http://localhost:8000/api/v1/3nxkkA
+Content-Type: application/json

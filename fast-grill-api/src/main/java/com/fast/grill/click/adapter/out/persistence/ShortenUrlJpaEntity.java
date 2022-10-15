@@ -3,7 +3,7 @@ package com.fast.grill.click.adapter.out.persistence;
 import lombok.*;
 
 import javax.persistence.*;
-import java.time.ZonedDateTime;
+import java.time.Instant;
 
 
 @Entity
@@ -12,7 +12,7 @@ import java.time.ZonedDateTime;
 @EqualsAndHashCode(callSuper = true) // TODO: 인텔리제이 주도 개발로 썼지만, 뭔지 알고 쓰기
 @AllArgsConstructor
 @NoArgsConstructor
-public class ShortenUrlJpaJpaEntity extends AbstractJpaEntity {
+public class ShortenUrlJpaEntity extends AbstractJpaEntity {
     @Id
     @GeneratedValue
     private Long id;
@@ -25,7 +25,7 @@ public class ShortenUrlJpaJpaEntity extends AbstractJpaEntity {
     @Enumerated(EnumType.STRING)
     private Status status;
 
-    private ZonedDateTime expiredAt;
+    private Instant expiredAt;
 
     private Long thresholdRequestCount;
 
