@@ -1,4 +1,4 @@
-package com.fastgrill.core.shortenurl.domain;
+package com.fastgrill.api.domain;
 
 import lombok.Builder;
 import lombok.Getter;

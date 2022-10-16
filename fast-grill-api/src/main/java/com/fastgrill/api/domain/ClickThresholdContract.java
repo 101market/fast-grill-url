@@ -1,4 +1,4 @@
-package com.fastgrill.core.shortenurl.domain;
+package com.fastgrill.api.domain;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;

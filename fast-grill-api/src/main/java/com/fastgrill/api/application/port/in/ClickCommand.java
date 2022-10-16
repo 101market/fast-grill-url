@@ -1,4 +1,4 @@
-package com.fastgrill.core.shortenurl.application.port.in;
+package com.fastgrill.api.application.port.in;
 
 import com.fastgrill.core.common.SelfValidating;
 import lombok.EqualsAndHashCode;

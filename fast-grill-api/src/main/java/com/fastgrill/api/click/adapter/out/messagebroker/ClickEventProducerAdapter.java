@@ -1,7 +1,7 @@
-package com.fastgrill.core.shortenurl.adapter.out.messagebroker;
+package com.fastgrill.api.click.adapter.out.messagebroker;
 
-import com.fastgrill.core.shortenurl.application.port.out.ClickEventProducerPort;
-import com.fastgrill.core.shortenurl.domain.ClickEvent;
+import com.fastgrill.api.application.port.out.ClickEventProducerPort;
+import com.fastgrill.api.domain.ClickEvent;
 import com.fastgrill.core.shortenurl.domain.Event;
 import com.fastgrill.core.common.PersistenceAdapter;
 import lombok.RequiredArgsConstructor;

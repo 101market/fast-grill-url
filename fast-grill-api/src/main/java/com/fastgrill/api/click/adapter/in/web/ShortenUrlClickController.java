@@ -1,7 +1,7 @@
 package com.fastgrill.api.click.adapter.in.web;
 
-import com.fastgrill.core.shortenurl.application.port.in.ClickCommand;
-import com.fastgrill.core.shortenurl.application.port.in.ClickUseCase;
+import com.fastgrill.api.application.port.in.ClickCommand;
+import com.fastgrill.api.application.port.in.ClickUseCase;
 import com.fastgrill.core.common.WebAdapter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

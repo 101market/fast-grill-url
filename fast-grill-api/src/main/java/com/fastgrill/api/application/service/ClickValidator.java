@@ -1,6 +1,6 @@
-package com.fastgrill.core.shortenurl.application.service;
+package com.fastgrill.api.application.service;
 
-import com.fastgrill.core.shortenurl.domain.ClickUrl;
+import com.fastgrill.api.domain.ClickUrl;
 
 // TODO: 헥사고날에서 service에서만 사용되는 validator가 service에 위치하는게 적합한지 찾아보기
 public interface ClickValidator {

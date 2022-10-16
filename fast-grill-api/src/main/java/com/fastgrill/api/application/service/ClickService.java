@@ -1,11 +1,11 @@
-package com.fastgrill.core.shortenurl.application.service;
+package com.fastgrill.api.application.service;
 
-import com.fastgrill.core.shortenurl.domain.ClickEvent;
-import com.fastgrill.core.shortenurl.application.port.in.ClickCommand;
-import com.fastgrill.core.shortenurl.application.port.in.ClickUseCase;
-import com.fastgrill.core.shortenurl.application.port.out.LoadClickUrlPort;
-import com.fastgrill.core.shortenurl.application.port.out.ClickEventProducerPort;
-import com.fastgrill.core.shortenurl.domain.ClickUrl;
+import com.fastgrill.api.domain.ClickEvent;
+import com.fastgrill.api.application.port.in.ClickCommand;
+import com.fastgrill.api.application.port.in.ClickUseCase;
+import com.fastgrill.api.application.port.out.LoadClickUrlPort;
+import com.fastgrill.api.application.port.out.ClickEventProducerPort;
+import com.fastgrill.api.domain.ClickUrl;
 import com.fastgrill.core.common.UseCase;
 import lombok.RequiredArgsConstructor;
 

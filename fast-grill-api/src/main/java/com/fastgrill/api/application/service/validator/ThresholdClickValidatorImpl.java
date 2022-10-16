@@ -1,8 +1,8 @@
-package com.fastgrill.core.shortenurl.application.service.validator;
+package com.fastgrill.api.application.service.validator;
 
-import com.fastgrill.core.shortenurl.application.service.ClickValidator;
-import com.fastgrill.core.shortenurl.application.service.exception.ClosedUrlClickException;
-import com.fastgrill.core.shortenurl.domain.ClickUrl;
+import com.fastgrill.api.application.service.ClickValidator;
+import com.fastgrill.api.application.service.exception.ClosedUrlClickException;
+import com.fastgrill.api.domain.ClickUrl;
 import com.fastgrill.core.common.UseCase;
 
 @UseCase

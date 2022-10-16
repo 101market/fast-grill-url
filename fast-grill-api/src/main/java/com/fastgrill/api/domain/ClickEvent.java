@@ -1,6 +1,7 @@
-package com.fastgrill.core.shortenurl.domain;
+package com.fastgrill.api.domain;
 
 
+import com.fastgrill.core.shortenurl.domain.Event;
 import lombok.Getter;
 
 @Getter
