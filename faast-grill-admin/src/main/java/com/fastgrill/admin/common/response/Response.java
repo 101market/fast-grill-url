@@ -28,11 +28,11 @@ public class Response<T> {
         return success(data, null);
     }
 
-    public static Response fail(String message, String errorCode) {
+    public static Response fail(String message, ErrorCode errorCode) {
         return Response.builder()
                 .result(Result.FAIL)
                 .message(message)
-                .errorCode(errorCode)
+                .errorCode(errorCode.name())
                 .build();
     }
 

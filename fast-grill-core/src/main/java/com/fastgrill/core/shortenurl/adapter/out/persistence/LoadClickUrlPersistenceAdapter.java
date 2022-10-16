@@ -1,6 +1,6 @@
 package com.fastgrill.core.shortenurl.adapter.out.persistence;
 
-import com.fastgrill.core.shortenurl.application.port.out.LoadShortenUrlPort;
+import com.fastgrill.core.shortenurl.application.port.out.LoadClickUrlPort;
 import com.fastgrill.core.shortenurl.domain.ClickUrl;
 import com.fastgrill.core.common.PersistenceAdapter;
 import lombok.RequiredArgsConstructor;
@@ -11,7 +11,7 @@ import javax.persistence.EntityNotFoundException;
 
 @RequiredArgsConstructor
 @PersistenceAdapter
-public class ShortenUrlPersistenceAdapter implements LoadShortenUrlPort {
+public class LoadClickUrlPersistenceAdapter implements LoadClickUrlPort {
     private final ShortenUrlRepository shortenUrlRepository;
     private final ShortenUrlMapper shortenUrlMapper;
 

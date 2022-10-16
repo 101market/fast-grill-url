@@ -8,10 +8,9 @@ import java.time.Instant;
 
 @Entity
 @Table(name = "shorten_url")
-@Data
+@Getter
+@Builder
 @EqualsAndHashCode(callSuper = true) // TODO: 인텔리제이 주도 개발로 썼지만, 뭔지 알고 쓰기
-@AllArgsConstructor
-@NoArgsConstructor
 public class ShortenUrlJpaEntity extends AbstractJpaEntity {
     @Id
     @GeneratedValue
@@ -28,6 +27,16 @@ public class ShortenUrlJpaEntity extends AbstractJpaEntity {
     private Instant expiredAt;
 
     private Long thresholdRequestCount;
+
+    public static ShortenUrlJpaEntity create(String originUrl, Instant expiredAt, Long thresholdRequestCount){
+        return ShortenUrlJpaEntity.builder()
+                .originUrl(originUrl)
+                .expiredAt(expiredAt)
+                .thresholdRequestCount(thresholdRequestCount)
+                .status(Status.DISABLE)
+                .shortenToken("random")
+                .build();
+    }
 
     public boolean isEnable(){
         return status == Status.ENABLE;

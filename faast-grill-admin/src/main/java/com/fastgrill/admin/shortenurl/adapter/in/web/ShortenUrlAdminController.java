@@ -1,9 +1,10 @@
-package com.fastgrill.admin.url.adapter.in.web;
+package com.fastgrill.admin.shortenurl.adapter.in.web;
 
 import com.fastgrill.admin.common.response.Response;
+import com.fastgrill.admin.shortenurl.adapter.in.web.dto.ShortenUrlCreateRequest;
+import com.fastgrill.admin.shortenurl.adapter.in.web.dto.ShortenUrlCreateResponse;
+import com.fastgrill.admin.shortenurl.application.port.in.ShortenUrlAdminUseCase;
 import com.fastgrill.core.common.WebAdapter;
-import com.fastgrill.core.shortenurl.application.port.in.ShortenUrlAdminUseCase;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,6 +23,6 @@ public class ShortenUrlAdminController {
     @PostMapping
     public Response<ShortenUrlCreateResponse> create(@Valid @RequestBody ShortenUrlCreateRequest request) {
         var shortenToken = shortenUrlAdminUseCase.create(request.toCommand());
-        return Response.success(ShortenUrlCreateResponse.of(shortenToken));
+        return Response.success(ShortenUrlCreateResponse.fromShortenUrl(shortenToken));
     }
 }

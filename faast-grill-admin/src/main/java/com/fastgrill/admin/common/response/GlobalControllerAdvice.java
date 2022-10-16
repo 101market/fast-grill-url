@@ -1,6 +1,6 @@
 package com.fastgrill.admin.common.response;
 
-import com.fastgrill.api.common.interceptor.CommonHttpRequestInterceptor;
+import com.fastgrill.admin.common.interceptor.CommonHttpRequestInterceptor;
 import com.fastgrill.core.common.exception.BaseException;
 import com.fastgrill.core.common.exception.ErrorCode;
 import lombok.extern.slf4j.Slf4j;
