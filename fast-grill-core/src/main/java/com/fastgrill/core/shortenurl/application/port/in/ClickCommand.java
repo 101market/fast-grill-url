@@ -8,11 +8,11 @@ import javax.validation.constraints.NotEmpty;
 
 @Value
 @EqualsAndHashCode(callSuper = false)
-public class ClickShortenUrlCommand extends SelfValidating<ClickShortenUrlCommand> {
+public class ClickCommand extends SelfValidating<ClickCommand> {
     @NotEmpty
     private final String shortenToken;
 
-    public ClickShortenUrlCommand(String shortenToken) {
+    public ClickCommand(String shortenToken) {
         this.shortenToken = shortenToken;
         this.validateSelf();
     }

@@ -1,8 +1,8 @@
 package com.fastgrill.core.shortenurl.application.service;
 
 import com.fastgrill.core.shortenurl.domain.ClickEvent;
-import com.fastgrill.core.shortenurl.application.port.in.ClickShortenUrlCommand;
-import com.fastgrill.core.shortenurl.application.port.in.ClickShortenUrlUseCase;
+import com.fastgrill.core.shortenurl.application.port.in.ClickCommand;
+import com.fastgrill.core.shortenurl.application.port.in.ClickUseCase;
 import com.fastgrill.core.shortenurl.application.port.out.LoadShortenUrlPort;
 import com.fastgrill.core.shortenurl.application.port.out.ClickEventProducerPort;
 import com.fastgrill.core.shortenurl.domain.ClickUrl;
@@ -13,13 +13,13 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @UseCase
-public class ClickShortenUrlService implements ClickShortenUrlUseCase {
+public class ClickService implements ClickUseCase {
     private final List<ClickValidator> validators;
     private final LoadShortenUrlPort loadShortenUrlPort;
     private final ClickEventProducerPort clickEventProducerPort;
 
     @Override
-    public String clickShortenUrl(ClickShortenUrlCommand command) {
+    public String clickShortenUrl(ClickCommand command) {
         ClickUrl clickUrl = loadShortenUrlPort.loadClickUrl(command.getShortenToken());
         validators.forEach(validator -> validator.validate(clickUrl));
 

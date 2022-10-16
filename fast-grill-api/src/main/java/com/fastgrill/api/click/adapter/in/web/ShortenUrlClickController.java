@@ -1,7 +1,7 @@
 package com.fastgrill.api.click.adapter.in.web;
 
-import com.fastgrill.core.shortenurl.application.port.in.ClickShortenUrlCommand;
-import com.fastgrill.core.shortenurl.application.port.in.ClickShortenUrlUseCase;
+import com.fastgrill.core.shortenurl.application.port.in.ClickCommand;
+import com.fastgrill.core.shortenurl.application.port.in.ClickUseCase;
 import com.fastgrill.core.common.WebAdapter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -18,13 +18,13 @@ import java.net.URI;
 @RequiredArgsConstructor
 @RequestMapping("api/v1")
 public class ShortenUrlClickController {
-    private final ClickShortenUrlUseCase clickShortenUrlUseCase;
+    private final ClickUseCase clickUseCase;
 
     @GetMapping(path = "/{shortenToken}")
     ResponseEntity click(
             @PathVariable("shortenToken") String shortenToken) {
-        ClickShortenUrlCommand command = new ClickShortenUrlCommand(shortenToken);
-        String redirectUrl = clickShortenUrlUseCase.clickShortenUrl(command);
+        ClickCommand command = new ClickCommand(shortenToken);
+        String redirectUrl = clickUseCase.clickShortenUrl(command);
         return ResponseEntity
                 .status(HttpStatus.FOUND)
                 .location(URI.create(redirectUrl))
