@@ -1,5 +1,6 @@
 package com.fastgrill.core.shortenurl.adapter.out.persistence;
 
+import com.fastgrill.core.utils.Base62;
 import lombok.*;
 
 import javax.persistence.*;
@@ -34,8 +35,12 @@ public class ShortenUrlJpaEntity extends AbstractJpaEntity {
                 .expiredAt(expiredAt)
                 .thresholdRequestCount(thresholdRequestCount)
                 .status(Status.DISABLE)
-                .shortenToken("random")
                 .build();
+    }
+
+    @PostPersist
+    public void updateShortenToken(){
+        this.shortenToken = Base62.encodeToLong(id);
     }
 
     public boolean isEnable(){
