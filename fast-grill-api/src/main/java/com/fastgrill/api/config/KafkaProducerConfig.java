@@ -1,4 +1,4 @@
-package com.fastgrill.core.config;
+package com.fastgrill.api.config;
 
 import java.util.HashMap;
 import java.util.Map;

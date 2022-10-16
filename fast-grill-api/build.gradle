@@ -30,6 +30,8 @@ dependencies {
             'org.projectlombok:lombok-mapstruct-binding:0.1.0'
     )
 
+    implementation 'org.springframework.kafka:spring-kafka:2.9.0'
+
     implementation project(':fast-grill-core')
 }
 

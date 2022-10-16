@@ -1,11 +1,12 @@
-package com.fastgrill.core.shortenurl.adapter.out.persistence;
+package com.fastgrill.api.click.adapter.out.persistence;
 
-import com.fastgrill.core.shortenurl.domain.ClickThresholdContract;
-import com.fastgrill.core.shortenurl.domain.ClickUrl;
+import com.fastgrill.api.domain.ClickThresholdContract;
+import com.fastgrill.api.domain.ClickUrl;
+import com.fastgrill.core.shortenurl.adapter.out.persistence.ShortenUrlJpaEntity;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ShortenUrlMapper {
+public class ClickUrlMapper {
     //    TODO: map struct으로 교체하자
     public ClickUrl mapToDomainEntity(ShortenUrlJpaEntity shortenUrl) {
         ClickThresholdContract thresholdContract = new ClickThresholdContract(

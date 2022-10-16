@@ -12,6 +12,8 @@ import java.time.Instant;
 @Getter
 @Builder
 @EqualsAndHashCode(callSuper = true) // TODO: 인텔리제이 주도 개발로 썼지만, 뭔지 알고 쓰기
+@AllArgsConstructor
+@NoArgsConstructor
 public class ShortenUrlJpaEntity extends AbstractJpaEntity {
     @Id
     @GeneratedValue

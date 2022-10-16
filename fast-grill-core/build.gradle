@@ -39,8 +39,6 @@ dependencies {
     runtimeOnly 'com.h2database:h2'
 //    runtimeOnly 'mysql:mysql-connector-java'
 
-    implementation 'org.springframework.kafka:spring-kafka:2.9.0'
-
 //        TODO: 변수 참조 오류 ㅅ수정 (query dsl도 점검)
 //       testImplementation 'org.spockframework:spock-core:{spockVersion}'
 //        testImplementation 'org.spockframework:spock-spring:{spockVersion}'
