@@ -1,5 +1,5 @@
 rootProject.name = 'fast-grill-url'
 include 'fast-grill-api'
 include 'fast-grill-core'
-
+include 'faast-grill-admin'
 

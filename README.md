@@ -7,7 +7,7 @@ docker-compose up
 ```
 #### 2. api 호출
 ```
-curl -X GET "localhost:8080/api/RXad41E"
+curl -X GET "localhost:8000/api/RXad41E"
 ```
 
 #### 3. kafka drop 확인하기 
