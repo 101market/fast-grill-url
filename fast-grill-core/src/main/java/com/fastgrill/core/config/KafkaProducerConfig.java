@@ -3,7 +3,7 @@ package com.fastgrill.core.config;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.fastgrill.core.click.adapter.out.messagebroker.Event;
+import com.fastgrill.core.click.domain.Event;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.beans.factory.annotation.Value;

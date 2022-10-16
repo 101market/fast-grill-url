@@ -1,4 +1,4 @@
-package com.fastgrill.core.click.adapter.out.messagebroker;
+package com.fastgrill.core.click.domain;
 
 
 import lombok.Getter;
