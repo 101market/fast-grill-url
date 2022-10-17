@@ -1,6 +1,6 @@
 package com.fastgrill.admin.shortenurl.adapter.in.web.dto;
 
-import com.fastgrill.admin.shortenurl.adapter.in.web.CreateShortenUrlCommand;
+import com.fastgrill.admin.shortenurl.application.port.in.CreateShortenUrlCommand;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -9,13 +9,13 @@ import java.time.Instant;
 
 @Getter
 @Builder
-public class ShortenUrlCreateRequest {
+public class CreateShortenUrlRequest {
     @NotEmpty
-    private final String url;
+    private final String originUrl;
     private final Instant expiredAt;
     private final Long thresholdRequestCount;
 
     public CreateShortenUrlCommand toCommand() {
-        return CreateShortenUrlCommand.builder().url(url).expiredAt(expiredAt).thresholdRequestCount(thresholdRequestCount).build();
+        return CreateShortenUrlCommand.builder().originUrl(originUrl).expiredAt(expiredAt).thresholdRequestCount(thresholdRequestCount).build();
     }
 }
