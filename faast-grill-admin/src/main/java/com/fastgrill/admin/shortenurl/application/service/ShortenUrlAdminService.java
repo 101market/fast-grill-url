@@ -29,4 +29,14 @@ public class ShortenUrlAdminService implements ShortenUrlAdminUseCase {
     public ShortenUrl modify(ModifyShortenUrlCommand command) {
         return shortenUrlPort.modify(command);
     }
+
+    @Override
+    public void enableUrl(Long shortenUrlId) {
+        shortenUrlPort.enableUrl(shortenUrlId);
+    }
+
+    @Override
+    public void disableUrl(Long shortenUrlId) {
+        shortenUrlPort.disableUrl(shortenUrlId);
+    }
 }

@@ -45,6 +45,14 @@ public class ShortenUrlJpaEntity extends AbstractJpaEntity {
         this.shortenToken = Base62.encodeToLong(id);
     }
 
+    public void enable() {
+        this.status = Status.ENABLE;
+    }
+
+    public void disable() {
+        this.status = Status.DISABLE;
+    }
+
     public boolean isEnable(){
         return status == Status.ENABLE;
     }

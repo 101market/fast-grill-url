@@ -21,7 +21,7 @@ public class ShortenUrlPersistenceAdapter implements ShortenUrlPort {
     private final ShortenUrlMapper shortenUrlMapper;
 
     @Override
-    @Transactional(readOnly = true)
+    @Transactional
     public ShortenUrl create(CreateShortenUrlCommand command) {
         var shortenUrlJpaEntity = shortenUrlRepository.save(command.toEntity());
         return shortenUrlMapper.toShortenUrl(shortenUrlJpaEntity);
@@ -37,12 +37,30 @@ public class ShortenUrlPersistenceAdapter implements ShortenUrlPort {
     @Transactional
     public ShortenUrl modify(ModifyShortenUrlCommand command) {
         Long shortenUrlId = command.getId();
-        ShortenUrlJpaEntity shortenUrlJpaEntity = shortenUrlRepository.findById(shortenUrlId)
-                .orElseThrow(() ->
-                        new BaseException(ErrorCode.SHORTEN_URL_NOT_FOUND, String.format("shortenId 번호는 %d입니다.", shortenUrlId))
-                );
+        ShortenUrlJpaEntity shortenUrlJpaEntity = getShortenUrlJpaEntity(shortenUrlId);
         shortenUrlMapper.updateEntity(shortenUrlJpaEntity, command);
         shortenUrlRepository.save(shortenUrlJpaEntity);
         return shortenUrlMapper.toShortenUrl(shortenUrlJpaEntity);
+    }
+
+    @Override
+    @Transactional
+    public void enableUrl(Long shortenUrlId) {
+        ShortenUrlJpaEntity shortenUrlJpaEntity = getShortenUrlJpaEntity(shortenUrlId);
+        shortenUrlJpaEntity.enable();
+    }
+
+    @Override
+    @Transactional
+    public void disableUrl(Long shortenUrlId) {
+        ShortenUrlJpaEntity shortenUrlJpaEntity = getShortenUrlJpaEntity(shortenUrlId);
+        shortenUrlJpaEntity.disable();
+    }
+
+    private ShortenUrlJpaEntity getShortenUrlJpaEntity(Long shortenUrlId) {
+        return shortenUrlRepository.findById(shortenUrlId)
+                .orElseThrow(() ->
+                        new BaseException(ErrorCode.SHORTEN_URL_NOT_FOUND, String.format("shortenId 번호는 %d입니다.", shortenUrlId))
+                );
     }
 }

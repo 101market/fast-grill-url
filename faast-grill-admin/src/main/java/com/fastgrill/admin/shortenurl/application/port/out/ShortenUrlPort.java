@@ -12,4 +12,8 @@ public interface ShortenUrlPort {
     Page<ShortenUrl> list(Pageable pageable);
 
     ShortenUrl modify(ModifyShortenUrlCommand command);
+
+    void enableUrl(Long shortenUrlId);
+
+    void disableUrl(Long shortenUrlId);
 }
