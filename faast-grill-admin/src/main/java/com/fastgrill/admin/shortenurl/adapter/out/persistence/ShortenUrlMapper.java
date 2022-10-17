@@ -7,11 +7,9 @@ import com.fastgrill.core.shortenurl.adapter.out.persistence.ShortenUrlJpaEntity
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
 
-@Mapper(
-        componentModel = "spring"
-)
+@Mapper(componentModel = "spring")
 public interface ShortenUrlMapper {
     ShortenUrl toShortenUrl(ShortenUrlJpaEntity shortenUrlJpaEntity);
 
-    void updateEntity(@MappingTarget ShortenUrlJpaEntity shortenUrlJpaEntity, ModifyShortenUrlCommand command);
+    void updateEntity(ShortenUrlJpaEntity shortenUrlJpaEntity, @MappingTarget ModifyShortenUrlCommand command);
 }
