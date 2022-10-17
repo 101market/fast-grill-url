@@ -57,6 +57,11 @@ public class ShortenUrlJpaEntity extends AbstractJpaEntity {
         return status == Status.ENABLE;
     }
 
+    public void update(Instant expiredAt, Long thresholdRequestCount) {
+        this.expiredAt = expiredAt;
+        this.thresholdRequestCount = thresholdRequestCount;
+    }
+
     @Getter
     @RequiredArgsConstructor
     public enum Status {

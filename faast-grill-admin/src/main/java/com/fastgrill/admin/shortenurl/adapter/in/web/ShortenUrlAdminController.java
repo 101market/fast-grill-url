@@ -31,7 +31,7 @@ public class ShortenUrlAdminController {
 
     @PatchMapping("/{shortenUrlId}")
     public Response<ModifyShortenUrlResponse> modify(@PathVariable Long shortenUrlId, @Valid @RequestBody ModifyShortenUrlRequest request) {
-        var shortenUrl = shortenUrlAdminUseCase.modify(request.toCommandWith(shortenUrlId));
+        var shortenUrl = shortenUrlAdminUseCase.modify(shortenUrlId, request.toCommand());
         return Response.success(ModifyShortenUrlResponse.fromShortenUrl(shortenUrl));
     }
 

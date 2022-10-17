@@ -9,7 +9,7 @@ public interface ShortenUrlAdminUseCase {
 
     Page<ShortenUrl> list(Pageable pageable);
 
-    ShortenUrl modify(ModifyShortenUrlCommand command);
+    ShortenUrl modify(Long shortenUrlId, ModifyShortenUrlCommand command);
 
     void enableUrl(Long shortenUrlId);
 

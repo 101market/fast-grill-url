@@ -9,14 +9,11 @@ import java.time.Instant;
 @Getter
 @Builder
 public class ModifyShortenUrlRequest {
-    private String originUrl;
     private Instant expiredAt;
     private Long thresholdRequestCount;
 
-    public ModifyShortenUrlCommand toCommandWith(Long shortenUrlId) {
+    public ModifyShortenUrlCommand toCommand() {
         return ModifyShortenUrlCommand.builder()
-                .id(shortenUrlId)
-                .originUrl(originUrl)
                 .expiredAt(expiredAt)
                 .thresholdRequestCount(thresholdRequestCount)
                 .build();

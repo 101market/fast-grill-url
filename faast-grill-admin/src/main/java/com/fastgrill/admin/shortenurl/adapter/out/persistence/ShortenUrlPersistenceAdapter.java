@@ -35,10 +35,9 @@ public class ShortenUrlPersistenceAdapter implements ShortenUrlPort {
 
     @Override
     @Transactional
-    public ShortenUrl modify(ModifyShortenUrlCommand command) {
-        Long shortenUrlId = command.getId();
+    public ShortenUrl modify(Long shortenUrlId, ModifyShortenUrlCommand command) {
         ShortenUrlJpaEntity shortenUrlJpaEntity = getShortenUrlJpaEntity(shortenUrlId);
-        shortenUrlMapper.updateEntity(shortenUrlJpaEntity, command);
+        shortenUrlJpaEntity.update(command.getExpiredAt(), command.getThresholdRequestCount());
         shortenUrlRepository.save(shortenUrlJpaEntity);
         return shortenUrlMapper.toShortenUrl(shortenUrlJpaEntity);
     }
