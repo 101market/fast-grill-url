@@ -24,22 +24,22 @@ public class ShortenUrlPersistenceAdapter implements ShortenUrlPort {
     @Transactional
     public ShortenUrl create(CreateShortenUrlCommand command) {
         var shortenUrlJpaEntity = shortenUrlRepository.save(command.toEntity());
-        return shortenUrlMapper.toShortenUrl(shortenUrlJpaEntity);
+        return shortenUrlMapper.fromEntity(shortenUrlJpaEntity);
     }
 
     @Override
     @Transactional(readOnly = true)
     public Page<ShortenUrl> list(Pageable pageable) {
-        return shortenUrlRepository.findAll(pageable).map(shortenUrlMapper::toShortenUrl);
+        return shortenUrlRepository.findAll(pageable).map(shortenUrlMapper::fromEntity);
     }
 
     @Override
     @Transactional
     public ShortenUrl modify(Long shortenUrlId, ModifyShortenUrlCommand command) {
         ShortenUrlJpaEntity shortenUrlJpaEntity = getShortenUrlJpaEntity(shortenUrlId);
-        shortenUrlJpaEntity.update(command.getExpiredAt(), command.getThresholdRequestCount());
+        shortenUrlMapper.updateEntity(command, shortenUrlJpaEntity);
         shortenUrlRepository.save(shortenUrlJpaEntity);
-        return shortenUrlMapper.toShortenUrl(shortenUrlJpaEntity);
+        return shortenUrlMapper.fromEntity(shortenUrlJpaEntity);
     }
 
     @Override
