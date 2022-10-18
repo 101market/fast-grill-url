@@ -13,6 +13,8 @@ import java.time.Instant;
 @Setter
 @Builder
 @EqualsAndHashCode(callSuper = true) // TODO: 인텔리제이 주도 개발로 썼지만, 뭔지 알고 쓰기
+@NoArgsConstructor
+@AllArgsConstructor
 public class ShortenUrlJpaEntity extends AbstractJpaEntity {
     @Id
     @GeneratedValue
@@ -41,6 +43,7 @@ public class ShortenUrlJpaEntity extends AbstractJpaEntity {
 
     @PostPersist
     public void updateShortenToken(){
+        // FIXME: 업데이트 안되는 오류 있음 
         this.shortenToken = Base62.encodeToLong(id);
     }
 
