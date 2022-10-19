@@ -24,6 +24,7 @@ public class ShortenUrlPersistenceAdapter implements ShortenUrlPort {
     @Transactional
     public ShortenUrl create(CreateShortenUrlCommand command) {
         var shortenUrlJpaEntity = shortenUrlRepository.save(command.toEntity());
+        shortenUrlRepository.saveAndFlush(shortenUrlJpaEntity);
         return shortenUrlMapper.fromEntity(shortenUrlJpaEntity);
     }
 

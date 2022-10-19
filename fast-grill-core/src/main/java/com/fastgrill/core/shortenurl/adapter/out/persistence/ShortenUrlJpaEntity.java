@@ -43,7 +43,6 @@ public class ShortenUrlJpaEntity extends AbstractJpaEntity {
 
     @PostPersist
     public void updateShortenToken(){
-        // FIXME: 업데이트 안되는 오류 있음 
         this.shortenToken = Base62.encodeToLong(id);
     }
 
