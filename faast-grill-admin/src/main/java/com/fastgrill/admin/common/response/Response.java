@@ -28,6 +28,10 @@ public class Response<T> {
         return success(data, null);
     }
 
+    public static <T> Response<T> success() {
+        return success(null, null);
+    }
+
     public static Response fail(String message, ErrorCode errorCode) {
         return Response.builder()
                 .result(Result.FAIL)

@@ -21,28 +21,46 @@ public class ShortenUrlPersistenceAdapter implements ShortenUrlPort {
     private final ShortenUrlMapper shortenUrlMapper;
 
     @Override
-    @Transactional(readOnly = true)
+    @Transactional
     public ShortenUrl create(CreateShortenUrlCommand command) {
         var shortenUrlJpaEntity = shortenUrlRepository.save(command.toEntity());
-        return shortenUrlMapper.toShortenUrl(shortenUrlJpaEntity);
+        shortenUrlRepository.saveAndFlush(shortenUrlJpaEntity);
+        return shortenUrlMapper.fromEntity(shortenUrlJpaEntity);
     }
 
     @Override
     @Transactional(readOnly = true)
     public Page<ShortenUrl> list(Pageable pageable) {
-        return shortenUrlRepository.findAll(pageable).map(shortenUrlMapper::toShortenUrl);
+        return shortenUrlRepository.findAll(pageable).map(shortenUrlMapper::fromEntity);
     }
 
     @Override
     @Transactional
-    public ShortenUrl modify(ModifyShortenUrlCommand command) {
-        Long shortenUrlId = command.getId();
-        ShortenUrlJpaEntity shortenUrlJpaEntity = shortenUrlRepository.findById(shortenUrlId)
+    public ShortenUrl modify(Long shortenUrlId, ModifyShortenUrlCommand command) {
+        ShortenUrlJpaEntity shortenUrlJpaEntity = getShortenUrlJpaEntity(shortenUrlId);
+        shortenUrlMapper.updateEntity(command, shortenUrlJpaEntity);
+        shortenUrlRepository.save(shortenUrlJpaEntity);
+        return shortenUrlMapper.fromEntity(shortenUrlJpaEntity);
+    }
+
+    @Override
+    @Transactional
+    public void enableUrl(Long shortenUrlId) {
+        ShortenUrlJpaEntity shortenUrlJpaEntity = getShortenUrlJpaEntity(shortenUrlId);
+        shortenUrlJpaEntity.enable();
+    }
+
+    @Override
+    @Transactional
+    public void disableUrl(Long shortenUrlId) {
+        ShortenUrlJpaEntity shortenUrlJpaEntity = getShortenUrlJpaEntity(shortenUrlId);
+        shortenUrlJpaEntity.disable();
+    }
+
+    private ShortenUrlJpaEntity getShortenUrlJpaEntity(Long shortenUrlId) {
+        return shortenUrlRepository.findById(shortenUrlId)
                 .orElseThrow(() ->
                         new BaseException(ErrorCode.SHORTEN_URL_NOT_FOUND, String.format("shortenId 번호는 %d입니다.", shortenUrlId))
                 );
-        shortenUrlMapper.updateEntity(shortenUrlJpaEntity, command);
-        shortenUrlRepository.save(shortenUrlJpaEntity);
-        return shortenUrlMapper.toShortenUrl(shortenUrlJpaEntity);
     }
 }

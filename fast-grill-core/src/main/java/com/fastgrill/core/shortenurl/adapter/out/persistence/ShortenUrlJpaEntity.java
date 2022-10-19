@@ -10,10 +10,11 @@ import java.time.Instant;
 @Entity
 @Table(name = "shorten_url")
 @Getter
+@Setter
 @Builder
 @EqualsAndHashCode(callSuper = true) // TODO: 인텔리제이 주도 개발로 썼지만, 뭔지 알고 쓰기
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 public class ShortenUrlJpaEntity extends AbstractJpaEntity {
     @Id
     @GeneratedValue
@@ -43,6 +44,14 @@ public class ShortenUrlJpaEntity extends AbstractJpaEntity {
     @PostPersist
     public void updateShortenToken(){
         this.shortenToken = Base62.encodeToLong(id);
+    }
+
+    public void enable() {
+        this.status = Status.ENABLE;
+    }
+
+    public void disable() {
+        this.status = Status.DISABLE;
     }
 
     public boolean isEnable(){

@@ -29,9 +29,21 @@ public class ShortenUrlAdminController {
         return Response.success(shortenUrlAdminUseCase.list(pageable).map(ShortenUrlResponse::fromShortenUrl));
     }
 
-    @PatchMapping("{shortenUrlId}")
+    @PatchMapping("/{shortenUrlId}")
     public Response<ModifyShortenUrlResponse> modify(@PathVariable Long shortenUrlId, @Valid @RequestBody ModifyShortenUrlRequest request) {
-        var shortenUrl = shortenUrlAdminUseCase.modify(request.toCommandWith(shortenUrlId));
+        var shortenUrl = shortenUrlAdminUseCase.modify(shortenUrlId, request.toCommand());
         return Response.success(ModifyShortenUrlResponse.fromShortenUrl(shortenUrl));
+    }
+
+    @PatchMapping("/{shortenUrlId}/enable")
+    public Response<Void> enableUrl(@PathVariable Long shortenUrlId) {
+        shortenUrlAdminUseCase.enableUrl(shortenUrlId);
+        return Response.success();
+    }
+
+    @PatchMapping("/{shortenUrlId}/disable")
+    public Response<Void> disableUrl(@PathVariable Long shortenUrlId) {
+        shortenUrlAdminUseCase.disableUrl(shortenUrlId);
+        return Response.success();
     }
 }
