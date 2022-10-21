@@ -1,4 +1,4 @@
-package com.fastgrill.api.click.adapter.out.messagebroker;
+package com.fastgrill.api.adapter.out.messagebroker;
 
 import com.fastgrill.api.application.port.out.ClickEventProducerPort;
 import com.fastgrill.api.domain.ClickEvent;

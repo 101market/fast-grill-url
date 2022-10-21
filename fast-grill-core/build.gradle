@@ -23,12 +23,6 @@ dependencies {
     // TODO:   mysql setting
     //	implementation 'org.flywaydb:flyway-core:7.10.0'
 
-    compileOnly 'org.projectlombok:lombok'
-    annotationProcessor(
-            'org.projectlombok:lombok',
-            'org.projectlombok:lombok-mapstruct-binding:0.1.0'
-    )
-
     // MapStruct
     implementation 'org.mapstruct:mapstruct:1.4.2.Final'
     annotationProcessor "org.mapstruct:mapstruct-processor:1.4.2.Final"
@@ -39,6 +33,16 @@ dependencies {
     runtimeOnly 'com.h2database:h2'
 //    runtimeOnly 'mysql:mysql-connector-java'
 
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor(
+            'org.projectlombok:lombok',
+            'org.projectlombok:lombok-mapstruct-binding:0.1.0'
+    )
+
+    testCompileOnly 'org.projectlombok:lombok'
+    testAnnotationProcessor 'org.projectlombok:lombok'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.spockframework:spock-core:2.2-M3-groovy-4.0'
     testImplementation 'org.spockframework:spock-spring:2.2-M3-groovy-4.0'
 
