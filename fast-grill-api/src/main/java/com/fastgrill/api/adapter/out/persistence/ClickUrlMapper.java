@@ -1,4 +1,4 @@
-package com.fastgrill.api.click.adapter.out.persistence;
+package com.fastgrill.api.adapter.out.persistence;
 
 import com.fastgrill.api.domain.ClickThresholdContract;
 import com.fastgrill.api.domain.ClickUrl;
@@ -13,6 +13,6 @@ public class ClickUrlMapper {
                 shortenUrl.getExpiredAt(),
                 shortenUrl.getThresholdRequestCount()
         );
-        return new ClickUrl(shortenUrl.getOriginUrl(), shortenUrl.isEnable(), thresholdContract);
+        return new ClickUrl(shortenUrl.getOriginUrl(), shortenUrl.getShortenToken(), shortenUrl.isEnable(), thresholdContract);
     }
 }

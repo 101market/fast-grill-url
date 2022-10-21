@@ -15,12 +15,15 @@ public class ClickUrl implements Serializable {
 
     private String originUrl;
 
+    private String shortenToken;
+
     private boolean enable;
 
     private ClickThresholdContract thresholdContract;
 
-    public ClickUrl(String originUrl, boolean enable, ClickThresholdContract thresholdContract) {
+    public ClickUrl(String originUrl, String shortenToken, boolean enable, ClickThresholdContract thresholdContract) {
         this.originUrl = originUrl;
+        this.shortenToken = shortenToken;
         this.enable = enable;
         this.thresholdContract = thresholdContract;
     }

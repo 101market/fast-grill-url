@@ -1,6 +1,6 @@
-package com.fastgrill.api.click.adapter.out.persistence;
+package com.fastgrill.api.adapter.out.persistence;
 
-import com.fastgrill.api.application.port.out.LoadClickUrlPort;
+import com.fastgrill.api.application.port.out.ShortenUrlPort;
 import com.fastgrill.api.domain.ClickUrl;
 import com.fastgrill.core.common.PersistenceAdapter;
 import com.fastgrill.core.shortenurl.adapter.out.persistence.ShortenUrlJpaEntity;
@@ -11,9 +11,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityNotFoundException;
 
-@RequiredArgsConstructor
 @PersistenceAdapter
-public class LoadClickUrlPersistenceAdapter implements LoadClickUrlPort {
+@RequiredArgsConstructor
+public class ShortenUrlPersistenceAdapter implements ShortenUrlPort {
     private final ShortenUrlRepository shortenUrlRepository;
     private final ClickUrlMapper clickUrlMapper;
 
