@@ -26,7 +26,7 @@ public class ClickService implements ClickUseCase {
         validators.forEach(validator -> validator.validate(clickUrl));
 
         shortenUrlHitsPort.increaseHits(command.getShortenToken());
-        
+
         var clickEvent = ClickEvent.of(command.getShortenToken());
         clickEventProducerPort.send(clickEvent);
 
