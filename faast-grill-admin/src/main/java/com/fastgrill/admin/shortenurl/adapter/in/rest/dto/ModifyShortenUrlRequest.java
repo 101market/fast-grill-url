@@ -1,4 +1,4 @@
-package com.fastgrill.admin.shortenurl.adapter.in.web.dto;
+package com.fastgrill.admin.shortenurl.adapter.in.rest.dto;
 
 import com.fastgrill.admin.shortenurl.application.port.in.ModifyShortenUrlCommand;
 import lombok.Builder;

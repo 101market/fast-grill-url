@@ -1,19 +1,15 @@
 package com.fastgrill.admin.shortenurl.adapter.in.web
 
 import com.fasterxml.jackson.databind.ObjectMapper
-import com.fastgrill.admin.common.response.GlobalControllerAdvice
-import com.fastgrill.admin.shortenurl.adapter.in.web.dto.CreateShortenUrlRequest
+import com.fastgrill.admin.shortenurl.adapter.in.rest.dto.CreateShortenUrlRequest
 import com.fastgrill.admin.shortenurl.application.port.in.ShortenUrlAdminUseCase
 import com.fastgrill.admin.shortenurl.domain.ShortenUrl
 import org.spockframework.spring.SpringBean
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
 import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.http.MediaType
 import org.springframework.test.web.servlet.MockMvc
-import org.springframework.test.web.servlet.setup.MockMvcBuilders
-import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean
 import spock.lang.Specification
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post
