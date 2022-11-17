@@ -5,11 +5,13 @@ import com.fastgrill.api.domain.ClickEvent;
 import com.fastgrill.core.shortenurl.domain.Event;
 import com.fastgrill.core.common.PersistenceAdapter;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
 
 @RequiredArgsConstructor
 @PersistenceAdapter
+@Slf4j
 public class ClickEventProducerAdapter implements ClickEventProducerPort {
     private final KafkaTemplate<String, Event> kafkaTemplate;
 
@@ -19,5 +21,6 @@ public class ClickEventProducerAdapter implements ClickEventProducerPort {
     @Override
     public void send(ClickEvent event) {
         kafkaTemplate.send(topicName, event);
+        log.info("[Kafka enqueued topic: {}, message: {}", topicName, event);
     }
 }

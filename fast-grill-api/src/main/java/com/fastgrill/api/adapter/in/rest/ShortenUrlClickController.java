@@ -6,6 +6,7 @@ import com.fastgrill.core.common.WebAdapter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mobile.device.Device;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,9 +22,10 @@ public class ShortenUrlClickController {
     private final ClickUseCase clickUseCase;
 
     @GetMapping(path = "/{shortenToken}")
-    ResponseEntity click(
-            @PathVariable("shortenToken") String shortenToken) {
-        ClickCommand command = new ClickCommand(shortenToken);
+    ResponseEntity click(@PathVariable("shortenToken") String shortenToken,
+                         Device device
+    ) {
+        ClickCommand command = new ClickCommand(shortenToken, device);
         String redirectUrl = clickUseCase.clickShortenUrl(command);
         return ResponseEntity
                 .status(HttpStatus.FOUND)

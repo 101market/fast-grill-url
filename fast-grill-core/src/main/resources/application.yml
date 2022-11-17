@@ -25,6 +25,9 @@ spring:
   redis:
     host: localhost
     port: 6379
+  mobile:
+    devicedelegatingviewresolver:
+      enabled: true
 logging:
   level:
     org.hibernate.SQL: debug
