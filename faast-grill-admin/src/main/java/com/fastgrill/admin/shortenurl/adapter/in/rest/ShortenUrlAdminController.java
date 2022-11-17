@@ -1,7 +1,7 @@
-package com.fastgrill.admin.shortenurl.adapter.in.web;
+package com.fastgrill.admin.shortenurl.adapter.in.rest;
 
 import com.fastgrill.admin.common.response.Response;
-import com.fastgrill.admin.shortenurl.adapter.in.web.dto.*;
+import com.fastgrill.admin.shortenurl.adapter.in.rest.dto.*;
 import com.fastgrill.admin.shortenurl.application.port.in.ShortenUrlAdminUseCase;
 import com.fastgrill.core.common.WebAdapter;
 import lombok.RequiredArgsConstructor;

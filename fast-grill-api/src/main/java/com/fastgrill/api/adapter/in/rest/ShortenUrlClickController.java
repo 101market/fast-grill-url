@@ -1,4 +1,4 @@
-package com.fastgrill.api.adapter.in.web;
+package com.fastgrill.api.adapter.in.rest;
 
 import com.fastgrill.api.application.port.in.ClickCommand;
 import com.fastgrill.api.application.port.in.ClickUseCase;

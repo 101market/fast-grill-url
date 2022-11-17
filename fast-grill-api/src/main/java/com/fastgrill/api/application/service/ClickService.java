@@ -8,6 +8,7 @@ import com.fastgrill.api.application.port.out.ClickEventProducerPort;
 import com.fastgrill.api.domain.ClickUrl;
 import com.fastgrill.core.common.UseCase;
 import com.fastgrill.core.shortenurl.application.port.out.ShortenUrlHitsPort;
+import com.fastgrill.core.shortenurl.application.service.specificaiton.AbstractSpecification;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
@@ -15,7 +16,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @UseCase
 public class ClickService implements ClickUseCase {
-    private final List<ClickValidator> validators;
+    private final List<AbstractSpecification<ClickUrl>> specifications;
     private final ShortenUrlPort shortenUrlPort;
     private final ShortenUrlHitsPort shortenUrlHitsPort;
     private final ClickEventProducerPort clickEventProducerPort;
@@ -23,7 +24,7 @@ public class ClickService implements ClickUseCase {
     @Override
     public String clickShortenUrl(ClickCommand command) {
         ClickUrl clickUrl = shortenUrlPort.loadClickUrl(command.getShortenToken());
-        validators.forEach(validator -> validator.validate(clickUrl));
+        specifications.forEach(specification -> specification.check(clickUrl));
 
         shortenUrlHitsPort.increaseHits(command.getShortenToken());
 
