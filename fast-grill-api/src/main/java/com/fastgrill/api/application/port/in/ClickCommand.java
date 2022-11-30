@@ -1,5 +1,6 @@
 package com.fastgrill.api.application.port.in;
 
+import com.fastgrill.api.domain.ClickEvent;
 import com.fastgrill.core.common.SelfValidating;
 import lombok.EqualsAndHashCode;
 import lombok.Value;
@@ -13,12 +14,20 @@ import javax.validation.constraints.NotNull;
 public class ClickCommand extends SelfValidating<ClickCommand> {
     @NotEmpty
     private final String shortenToken;
-    @NotNull
-    private final Device device;
 
-    public ClickCommand(String shortenToken, Device device) {
+    private final String referer;
+
+    @NotNull
+    private final String userAgent;
+
+    public ClickCommand(String shortenToken, String referer, String userAgent) {
         this.shortenToken = shortenToken;
-        this.device = device;
+        this.referer = referer;
+        this.userAgent = userAgent;
         this.validateSelf();
+    }
+
+    public ClickEvent toEvent() {
+        return new ClickEvent(shortenToken, referer, userAgent);
     }
 }

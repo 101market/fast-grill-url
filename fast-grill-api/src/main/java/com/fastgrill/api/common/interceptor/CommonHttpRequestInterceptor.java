@@ -3,6 +3,7 @@ package com.fastgrill.api.common.interceptor;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.MDC;
 import org.springframework.stereotype.Component;
+import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
@@ -19,7 +20,7 @@ public class CommonHttpRequestInterceptor extends HandlerInterceptorAdapter {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
         String requestEventId = request.getHeader(HEADER_REQUEST_UUID_KEY);
-        if (StringUtils.isEmpty(requestEventId)) {
+        if (ObjectUtils.isEmpty(requestEventId)) {
             requestEventId = UUID.randomUUID().toString();
         }
 
