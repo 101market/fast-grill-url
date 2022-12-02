@@ -20,7 +20,12 @@ public class ClickEventProducerAdapter implements ClickEventProducerPort {
 
     @Override
     public void send(ClickEvent event) {
-        kafkaTemplate.send(topicName, event);
-        log.info("[Kafka enqueued topic: {}, message: {}", topicName, event);
+        try {
+            kafkaTemplate.send(topicName, event);
+            log.info("[Kafka enqueued topic: {}, message: {}", topicName, event);
+        } catch (Exception e) {
+            log.error("[Kafka failed topic: {}, message: {}", topicName, event);
+            throw new RuntimeException(e);
+        }
     }
 }

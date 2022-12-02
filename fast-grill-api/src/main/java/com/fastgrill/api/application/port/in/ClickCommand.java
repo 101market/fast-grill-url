@@ -4,7 +4,6 @@ import com.fastgrill.api.domain.ClickEvent;
 import com.fastgrill.core.common.SelfValidating;
 import lombok.EqualsAndHashCode;
 import lombok.Value;
-import org.springframework.mobile.device.Device;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -20,14 +19,17 @@ public class ClickCommand extends SelfValidating<ClickCommand> {
     @NotNull
     private final String userAgent;
 
-    public ClickCommand(String shortenToken, String referer, String userAgent) {
+    private final String requestId;
+
+    public ClickCommand(String shortenToken, String referer, String userAgent, String requestId) {
         this.shortenToken = shortenToken;
         this.referer = referer;
         this.userAgent = userAgent;
+        this.requestId = requestId;
         this.validateSelf();
     }
 
     public ClickEvent toEvent() {
-        return new ClickEvent(shortenToken, referer, userAgent);
+        return new ClickEvent(requestId, shortenToken, referer, userAgent);
     }
 }
