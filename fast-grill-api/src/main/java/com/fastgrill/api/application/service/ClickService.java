@@ -28,7 +28,7 @@ public class ClickService implements ClickUseCase {
 
         shortenUrlHitsPort.increaseHits(command.getShortenToken());
 
-        var clickEvent = ClickEvent.of(command.getShortenToken(), command.getDevice());
+        var clickEvent = command.toEvent();
         clickEventProducerPort.send(clickEvent);
 
         return clickUrl.getOriginUrl();
