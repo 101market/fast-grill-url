@@ -14,13 +14,12 @@ import java.time.LocalDateTime;
 @Table(name = "statistics")
 public class StatisticsJpaEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // 기본 키 생성을 DB에 위임합니다. (AUTO_INCREMENT)
-    private Integer statisticsSeq;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
     private Long shortenUrlId;
 
     private LocalDateTime statisticsAt; // 일 단위
-
     private Long hits;
 
     public static StatisticsJpaEntity create(final Long shortenUrlId) {

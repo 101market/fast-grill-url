@@ -11,11 +11,11 @@ import java.time.LocalDateTime;
 @Setter
 @ToString
 @AllArgsConstructor
-public class AggregatedStatistics {
+public class AggregatedStatisticsData {
     private LocalDateTime statisticsAt; // 일 단위
     private long hits;
 
-    public void merge(final AggregatedStatistics statistics) {
+    public void merge(final AggregatedStatisticsData statistics) {
         this.hits += statistics.getHits();
     }
 }
