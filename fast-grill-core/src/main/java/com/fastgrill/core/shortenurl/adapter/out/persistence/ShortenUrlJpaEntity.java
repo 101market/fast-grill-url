@@ -17,7 +17,7 @@ import java.time.Instant;
 @AllArgsConstructor
 public class ShortenUrlJpaEntity extends AbstractJpaEntity {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     // unique index 추가하기
