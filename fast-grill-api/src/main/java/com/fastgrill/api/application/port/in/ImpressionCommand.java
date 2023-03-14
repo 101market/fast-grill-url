@@ -1,6 +1,7 @@
 package com.fastgrill.api.application.port.in;
 
 import com.fastgrill.api.domain.ClickEvent;
+import com.fastgrill.api.domain.ImpressionEvent;
 import com.fastgrill.core.common.SelfValidating;
 import lombok.EqualsAndHashCode;
 import lombok.Value;
@@ -29,7 +30,7 @@ public class ImpressionCommand extends SelfValidating<ImpressionCommand> {
         this.validateSelf();
     }
 
-    public ClickEvent toEvent() {
-        return new ClickEvent(requestId, shortenToken, referer, userAgent);
+    public ImpressionEvent toEvent() {
+        return new ImpressionEvent(requestId, shortenToken, referer, userAgent);
     }
 }

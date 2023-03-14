@@ -23,8 +23,8 @@ public class TrackingService implements TrackingUseCase {
 
     @Override
     public void impression(ImpressionCommand command) {
-        var clickEvent = command.toEvent();
-        trackingEventProducerPort.send(clickEvent);
+        var impressionEvent = command.toEvent();
+        trackingEventProducerPort.send(impressionEvent);
     }
 
     @Override

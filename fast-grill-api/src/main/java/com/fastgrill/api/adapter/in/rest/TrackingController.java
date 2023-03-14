@@ -20,7 +20,7 @@ import java.net.URI;
 @WebAdapter
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("api/v1")
+@RequestMapping("api/v1/track")
 public class TrackingController {
     private final TrackingUseCase trackingUseCase;
 
