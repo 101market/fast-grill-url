@@ -26,7 +26,7 @@ class TrackerControllerSpec extends Specification {
         clickUseCase.click(_) >> landingUrl
 
         expect:
-        mvc.perform(get("/api/v1/12k3ms#"))
+        mvc.perform(get("/api/v1/tracker/click/12k3ms#"))
                 .andExpect(status().isFound())
                 .andExpect(redirectedUrl(landingUrl))
     }
