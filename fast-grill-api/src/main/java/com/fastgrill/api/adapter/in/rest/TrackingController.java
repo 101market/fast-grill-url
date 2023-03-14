@@ -1,7 +1,8 @@
 package com.fastgrill.api.adapter.in.rest;
 
 import com.fastgrill.api.application.port.in.ClickCommand;
-import com.fastgrill.api.application.port.in.ClickUseCase;
+import com.fastgrill.api.application.port.in.ImpressionCommand;
+import com.fastgrill.api.application.port.in.TrackingUseCase;
 import com.fastgrill.api.common.resolver.Referer;
 import com.fastgrill.api.common.resolver.RequestEventId;
 import com.fastgrill.api.common.resolver.UserAgent;
@@ -20,20 +21,31 @@ import java.net.URI;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("api/v1")
-public class ShortenUrlClickController {
-    private final ClickUseCase clickUseCase;
+public class TrackingController {
+    private final TrackingUseCase trackingUseCase;
 
-    @GetMapping(path = "/{shortenToken}")
+    @GetMapping(path = "/impression/{shortenToken}")
+    ResponseEntity<Void> impression(@PathVariable("shortenToken") String shortenToken,
+                                    @Referer String referer,
+                                    @UserAgent String userAgent,
+                                    @RequestEventId String requestEventId
+    ) {
+        ImpressionCommand command = new ImpressionCommand(shortenToken, referer, userAgent, requestEventId);
+        trackingUseCase.impression(command);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @GetMapping(path = "/click/{shortenToken}")
     ResponseEntity click(@PathVariable("shortenToken") String shortenToken,
                          @Referer String referer,
                          @UserAgent String userAgent,
                          @RequestEventId String requestEventId
     ) {
         ClickCommand command = new ClickCommand(shortenToken, referer, userAgent, requestEventId);
-        String redirectUrl = clickUseCase.clickShortenUrl(command);
+        String landingUrl = trackingUseCase.click(command);
         return ResponseEntity
                 .status(HttpStatus.FOUND)
-                .location(URI.create(redirectUrl))
+                .location(URI.create(landingUrl))
                 .build();
     }
 }

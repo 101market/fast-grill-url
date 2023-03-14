@@ -32,4 +32,5 @@ logging:
 kafka:
   bootstrapAddress: localhost:29092
   topic:
+    impression: fastgrill.impression
     click: fastgrill.click
