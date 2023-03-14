@@ -2,7 +2,7 @@ package com.fastgrill.api.application.service;
 
 import com.fastgrill.api.application.port.in.ClickCommand;
 import com.fastgrill.api.application.port.in.ImpressionCommand;
-import com.fastgrill.api.application.port.in.TrackingUseCase;
+import com.fastgrill.api.application.port.in.TrackerUseCase;
 import com.fastgrill.api.application.port.out.ShortenUrlPort;
 import com.fastgrill.api.application.port.out.TrackingEventProducerPort;
 import com.fastgrill.api.domain.ClickUrl;
@@ -15,7 +15,7 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @UseCase
-public class TrackingService implements TrackingUseCase {
+public class TrackerService implements TrackerUseCase {
     private final List<AbstractSpecification<ClickUrl>> specifications;
     private final ShortenUrlPort shortenUrlPort;
     private final ShortenUrlHitsPort shortenUrlHitsPort;

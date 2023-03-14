@@ -1,6 +1,6 @@
 package com.fastgrill.api.application.port.in;
 
-public interface TrackingUseCase {
+public interface TrackerUseCase {
     /**
      * shorten url 노출 요청 처리
      * @param command

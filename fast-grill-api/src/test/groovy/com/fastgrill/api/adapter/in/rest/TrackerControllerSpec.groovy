@@ -1,6 +1,6 @@
 package com.fastgrill.api.adapter.in.rest
 
-import com.fastgrill.api.application.port.in.TrackingUseCase
+import com.fastgrill.api.application.port.in.TrackerUseCase
 import org.spockframework.spring.SpringBean
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
@@ -14,11 +14,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-class TrackingControllerSpec extends Specification {
+class TrackerControllerSpec extends Specification {
     @Autowired
     private MockMvc mvc
     @SpringBean
-    private TrackingUseCase clickUseCase = Stub(TrackingUseCase)
+    private TrackerUseCase clickUseCase = Stub(TrackerUseCase)
 
     def "원본 url으로 리다이렉트한다"() {
         given:
