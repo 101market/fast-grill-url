@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface StatisticsRepository extends JpaRepository<StatisticsJpaEntity, Integer> {
 
-    @Query(value = "SELECT new com.fastgrill.core.statistics.adapter.out.persistence.AggregatedStatistics(s.statisticsAt, SUM(s.hits)) " +
+    @Query(value = "SELECT new com.fastgrill.core.statistics.adapter.out.persistence.AggregatedStatisticsData(s.statisticsAt, SUM(s.hits)) " +
             "         FROM StatisticsJpaEntity s " +
             "        WHERE s.statisticsAt BETWEEN :from AND :to " +
             "     GROUP BY s.statisticsAt")

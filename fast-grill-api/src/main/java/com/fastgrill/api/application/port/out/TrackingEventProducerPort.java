@@ -1,0 +1,10 @@
+package com.fastgrill.api.application.port.out;
+
+import com.fastgrill.api.domain.ClickEvent;
+import com.fastgrill.api.domain.ImpressionEvent;
+
+public interface TrackingEventProducerPort {
+    void send(ImpressionEvent event);
+
+    void send(ClickEvent event);
+}
