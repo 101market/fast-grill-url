@@ -7,6 +7,9 @@ import com.fastgrill.api.common.resolver.Referer;
 import com.fastgrill.api.common.resolver.RequestEventId;
 import com.fastgrill.api.common.resolver.UserAgent;
 import com.fastgrill.core.common.WebAdapter;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.Parameters;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +27,14 @@ import java.net.URI;
 public class TrackerController {
     private final TrackerUseCase trackerUseCase;
 
+    @Operation(summary = "노출 트래킹", description = "시안이 노출될 때, 호출되는 노출 트래킹 API")
     @GetMapping(path = "/imp/{shortenToken}")
+    @Parameters({
+            @Parameter(name = "shortenToken", description = "단축 URL 토큰", example = "RXad41E"),
+            @Parameter(name = "referer", description = "referer url", required = false),
+            @Parameter(name = "userAgent", description = "userAgent", required = false),
+            @Parameter(name = "requestEventId", description = "requestEventId", required = false)
+    })
     ResponseEntity<Void> impression(@PathVariable("shortenToken") String shortenToken,
                                     @Referer String referer,
                                     @UserAgent String userAgent,
@@ -35,7 +45,14 @@ public class TrackerController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @GetMapping(path = "/click/{shortenToken}")
+    @Operation(summary = "클릭 트래킹", description = "시안이 클릭될 때, 호출되는 클릭 트래킹 API")
+    @GetMapping(path = "/clk/{shortenToken}")
+    @Parameters({
+            @Parameter(name = "shortenToken", description = "단축 URL 토큰", example = "RXad41E"),
+            @Parameter(name = "referer", description = "referer url", required = false),
+            @Parameter(name = "userAgent", description = "userAgent", required = false),
+            @Parameter(name = "requestEventId", description = "requestEventId", required = false)
+    })
     ResponseEntity click(@PathVariable("shortenToken") String shortenToken,
                          @Referer String referer,
                          @UserAgent String userAgent,
