@@ -9,12 +9,14 @@ import lombok.ToString;
 @ToString
 public class ClickEvent extends Event {
     private String shortenToken;
+    private String trackId;
     private String referer;
     private String userAgent;
 
-    public ClickEvent(String id, String shortenToken, String referer, String userAgent) {
+    public ClickEvent(String id, String shortenToken, String trackId, String referer, String userAgent) {
         super(id);
         this.shortenToken = shortenToken;
+        this.trackId = trackId;
         this.referer = referer;
         this.userAgent = userAgent;
     }
