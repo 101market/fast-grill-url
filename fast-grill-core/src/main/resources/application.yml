@@ -34,3 +34,4 @@ kafka:
   topic:
     impression: fastgrill.impression
     click: fastgrill.click
+    conversion: fastgrill.conversion
