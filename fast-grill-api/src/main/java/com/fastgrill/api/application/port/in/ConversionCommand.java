@@ -14,6 +14,9 @@ public class ConversionCommand extends SelfValidating<ConversionCommand> {
     @NotEmpty
     private final String shortenToken;
 
+    @NotEmpty
+    private final String trackId;
+
     private final String referer;
 
     @NotNull
@@ -21,8 +24,9 @@ public class ConversionCommand extends SelfValidating<ConversionCommand> {
 
     private final String requestId;
 
-    public ConversionCommand(String shortenToken, String referer, String userAgent, String requestId) {
+    public ConversionCommand(String shortenToken, String trackId, String referer, String userAgent, String requestId) {
         this.shortenToken = shortenToken;
+        this.trackId = trackId;
         this.referer = referer;
         this.userAgent = userAgent;
         this.requestId = requestId;
@@ -30,6 +34,6 @@ public class ConversionCommand extends SelfValidating<ConversionCommand> {
     }
 
     public ConversionEvent toEvent() {
-        return new ConversionEvent(requestId, shortenToken, referer, userAgent);
+        return new ConversionEvent(requestId, shortenToken, trackId, referer, userAgent);
     }
 }
