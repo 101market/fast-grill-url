@@ -1,6 +1,7 @@
 package com.fastgrill.api.adapter.in.rest;
 
 import com.fastgrill.api.application.port.in.ClickCommand;
+import com.fastgrill.api.application.port.in.ConversionCommand;
 import com.fastgrill.api.application.port.in.ImpressionCommand;
 import com.fastgrill.api.application.port.in.TrackerUseCase;
 import com.fastgrill.api.common.resolver.Referer;
@@ -42,7 +43,9 @@ public class TrackerController {
     ) {
         ImpressionCommand command = new ImpressionCommand(shortenToken, referer, userAgent, requestEventId);
         trackerUseCase.impression(command);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        return ResponseEntity
+                .status(HttpStatus.NO_CONTENT)
+                .build();
     }
 
     @Operation(summary = "클릭 트래킹", description = "시안이 클릭될 때, 호출되는 클릭 트래킹 API")
@@ -63,6 +66,26 @@ public class TrackerController {
         return ResponseEntity
                 .status(HttpStatus.FOUND)
                 .location(URI.create(landingUrl))
+                .build();
+    }
+
+    @Operation(summary = "전환 트래킹", description = "시안이 클릭 후, 원하는 이벤트로 전환되었을 때 호출되는 전환 트래킹 API")
+    @GetMapping(path = "/cvt/{shortenToken}")
+    @Parameters({
+            @Parameter(name = "shortenToken", description = "단축 URL 토큰", example = "RXad41E"),
+            @Parameter(name = "referer", description = "referer url", required = false),
+            @Parameter(name = "userAgent", description = "userAgent", required = false),
+            @Parameter(name = "requestEventId", description = "requestEventId", required = false)
+    })
+    ResponseEntity conversion(@PathVariable("shortenToken") String shortenToken,
+                              @Referer String referer,
+                              @UserAgent String userAgent,
+                              @RequestEventId String requestEventId
+    ) {
+        ConversionCommand command = new ConversionCommand(shortenToken, referer, userAgent, requestEventId);
+        trackerUseCase.convert(command);
+        return ResponseEntity
+                .status(HttpStatus.NO_CONTENT)
                 .build();
     }
 }
