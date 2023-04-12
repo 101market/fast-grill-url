@@ -30,7 +30,9 @@ logging:
     org.hibernate.SQL: debug
     org.hibernate.type: trace
 kafka:
-  bootstrapAddress: localhost:29092
+  #  TODO: 각 멀티 프로젝트 별로 정의되도록 변경
+  bootstrap-address: localhost:29092
+  application-id: fast-grill-consumer
   topic:
     impression: fastgrill.impression
     click: fastgrill.click
