@@ -7,13 +7,13 @@ import lombok.ToString;
 
 @Getter
 @ToString
-public class ClickEvent extends Event {
+public class ConversionEvent extends Event {
     private String shortenToken;
     private String trackId;
     private String referer;
     private String userAgent;
 
-    public ClickEvent(String id, String shortenToken, String trackId, String referer, String userAgent) {
+    public ConversionEvent(String id, String shortenToken, String trackId, String referer, String userAgent) {
         super(id);
         this.shortenToken = shortenToken;
         this.trackId = trackId;
