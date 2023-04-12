@@ -1,6 +1,7 @@
 package com.fastgrill.api.application.service;
 
 import com.fastgrill.api.application.port.in.ClickCommand;
+import com.fastgrill.api.application.port.in.ConversionCommand;
 import com.fastgrill.api.application.port.in.ImpressionCommand;
 import com.fastgrill.api.application.port.in.TrackerUseCase;
 import com.fastgrill.api.application.port.out.ShortenUrlPort;
@@ -23,8 +24,8 @@ public class TrackerService implements TrackerUseCase {
 
     @Override
     public void impression(ImpressionCommand command) {
-        var impressionEvent = command.toEvent();
-        trackingEventProducerPort.send(impressionEvent);
+        var event = command.toEvent();
+        trackingEventProducerPort.send(event);
     }
 
     @Override
@@ -34,9 +35,15 @@ public class TrackerService implements TrackerUseCase {
 
         shortenUrlHitsPort.increaseHits(command.getShortenToken());
 
-        var clickEvent = command.toEvent();
-        trackingEventProducerPort.send(clickEvent);
+        var event = command.toEvent();
+        trackingEventProducerPort.send(event);
 
         return clickUrl.getOriginUrl();
+    }
+
+    @Override
+    public void convert(ConversionCommand command) {
+        var event = command.toEvent();
+        trackingEventProducerPort.send(event);
     }
 }

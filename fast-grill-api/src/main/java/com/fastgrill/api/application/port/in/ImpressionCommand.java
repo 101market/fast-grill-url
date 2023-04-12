@@ -1,6 +1,5 @@
 package com.fastgrill.api.application.port.in;
 
-import com.fastgrill.api.domain.ClickEvent;
 import com.fastgrill.api.domain.ImpressionEvent;
 import com.fastgrill.core.common.SelfValidating;
 import lombok.EqualsAndHashCode;
@@ -15,6 +14,9 @@ public class ImpressionCommand extends SelfValidating<ImpressionCommand> {
     @NotEmpty
     private final String shortenToken;
 
+    @NotEmpty
+    private final String trackId;
+
     private final String referer;
 
     @NotNull
@@ -22,8 +24,9 @@ public class ImpressionCommand extends SelfValidating<ImpressionCommand> {
 
     private final String requestId;
 
-    public ImpressionCommand(String shortenToken, String referer, String userAgent, String requestId) {
+    public ImpressionCommand(String shortenToken, String trackId, String referer, String userAgent, String requestId) {
         this.shortenToken = shortenToken;
+        this.trackId = trackId;
         this.referer = referer;
         this.userAgent = userAgent;
         this.requestId = requestId;
@@ -31,6 +34,6 @@ public class ImpressionCommand extends SelfValidating<ImpressionCommand> {
     }
 
     public ImpressionEvent toEvent() {
-        return new ImpressionEvent(requestId, shortenToken, referer, userAgent);
+        return new ImpressionEvent(requestId, shortenToken, trackId, referer, userAgent);
     }
 }

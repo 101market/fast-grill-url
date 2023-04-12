@@ -1,21 +1,43 @@
 # fast-grill-url
-### Setting
-#### 1. docker compose 실행
+
+## Setting
+
+### 1. docker compose 실행
+
 ```
 cd docker
 docker-compose up
 ```
-#### 2. api 호출
+
+### 2. api 호출
+
+#### api
+
+#### swagger
+
 ```
-curl -X GET "localhost:8000/api/RXad41E"
+http://localhost:8000/swagger-ui/index.html
 ```
 
-#### 3. kafka drop 확인하기 
+#### imp api
+
+```
+curl -X GET "localhost:8000/api/tracker/imp/RXad41E"
+```
+
+#### click api
+
+```
+curl -X GET "localhost:8000/api/tracker/clk/RXad41E"
+```
+
+### 3. kafka drop 확인하기
+
 http://localhost:9001/
 ![kafdrop-screenshot](./kafdrop-screenshot.png)
 
-
 ### Module
+
 ```mermaid
 flowchart TB
     subgraph shorten-url-admin
@@ -34,7 +56,8 @@ flowchart TB
     end
 ```
 
-### Click Flow 
+### Click Flow
+
 ```mermaid
 flowchart TD
     A[shorten-url-클릭] --> G{url이-활성화되었는가}
