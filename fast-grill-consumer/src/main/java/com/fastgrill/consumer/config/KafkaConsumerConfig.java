@@ -20,7 +20,7 @@ import static org.apache.kafka.streams.StreamsConfig.*;
 @EnableKafkaStreams
 public class KafkaConsumerConfig {
 
-    @Value("${spring.kafka.bootstrap-servers}")
+    @Value("${spring.kafka.bootstrap-address}")
     private String bootstrapAddress;
 
     @Value("${spring.kafka.application-id}")

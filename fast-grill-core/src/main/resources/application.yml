@@ -25,14 +25,15 @@ spring:
   redis:
     host: localhost
     port: 6379
+  kafka:
+    bootstrap-address: localhost:29092 #  TODO: 각 멀티 프로젝트 별로 정의되도록 변경
+    application-id: fast-grill-consumer #  TODO: 각 멀티 프로젝트 별로 정의되도록 변경
+    topic:
+      impression: fastgrill.impression
+      click: fastgrill.click
+      conversion: fastgrill.conversion
 logging:
   level:
     org.hibernate.SQL: debug
     org.hibernate.type: trace
-kafka:
-  #  TODO: 각 멀티 프로젝트 별로 정의되도록 변경
-  bootstrap-address: localhost:29092
-  application-id: fast-grill-consumer
-  topic:
-    impression: fastgrill.impression
-    click: fastgrill.click
+
