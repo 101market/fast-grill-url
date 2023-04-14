@@ -1,21 +1,27 @@
 # fast-grill-url
+
 ### Setting
+
 #### 1. docker compose 실행
+
 ```
 cd docker
 docker-compose up
 ```
+
 #### 2. api 호출
+
 ```
 curl -X GET "localhost:8000/api/RXad41E"
 ```
 
-#### 3. kafka drop 확인하기 
-http://localhost:9001/
-![kafdrop-screenshot](./kafdrop-screenshot.png)
+#### 3. kafka ui 확인하기
 
+http://localhost:8989/
+![kafka-ui-screenshot](./kafka-ui-screenshot.png)
 
 ### Module
+
 ```mermaid
 flowchart TB
     subgraph shorten-url-admin
@@ -34,7 +40,8 @@ flowchart TB
     end
 ```
 
-### Click Flow 
+### Click Flow
+
 ```mermaid
 flowchart TD
     A[shorten-url-클릭] --> G{url이-활성화되었는가}
