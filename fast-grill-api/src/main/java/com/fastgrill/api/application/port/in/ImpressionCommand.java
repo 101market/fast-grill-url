@@ -1,8 +1,7 @@
 package com.fastgrill.api.application.port.in;
 
-import com.fastgrill.api.domain.ClickEvent;
-import com.fastgrill.api.domain.ImpressionEvent;
 import com.fastgrill.core.common.SelfValidating;
+import com.fastgrill.core.shortenurl.domain.ImpressionEvent;
 import lombok.EqualsAndHashCode;
 import lombok.Value;
 

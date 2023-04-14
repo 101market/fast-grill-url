@@ -1,10 +1,10 @@
 package com.fastgrill.api.adapter.out.messagebroker;
 
 import com.fastgrill.api.application.port.out.TrackingEventProducerPort;
-import com.fastgrill.api.domain.ClickEvent;
-import com.fastgrill.api.domain.ImpressionEvent;
-import com.fastgrill.core.shortenurl.domain.Event;
 import com.fastgrill.core.common.PersistenceAdapter;
+import com.fastgrill.core.shortenurl.domain.ClickEvent;
+import com.fastgrill.core.shortenurl.domain.Event;
+import com.fastgrill.core.shortenurl.domain.ImpressionEvent;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;

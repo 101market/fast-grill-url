@@ -1,9 +1,9 @@
 package com.fastgrill.api.application.service.specification;
 
-import com.fastgrill.core.shortenurl.application.port.out.ShortenUrlHitsPort;
 import com.fastgrill.api.application.service.exception.ClosedUrlClickException;
 import com.fastgrill.api.domain.ClickUrl;
 import com.fastgrill.core.common.DomainComponent;
+import com.fastgrill.core.shortenurl.application.port.out.ShortenUrlHitsPort;
 import com.fastgrill.core.shortenurl.application.service.specificaiton.AbstractSpecification;
 import lombok.RequiredArgsConstructor;
 

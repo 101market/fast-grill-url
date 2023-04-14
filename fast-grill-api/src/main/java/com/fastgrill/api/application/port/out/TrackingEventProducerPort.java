@@ -1,7 +1,7 @@
 package com.fastgrill.api.application.port.out;
 
-import com.fastgrill.api.domain.ClickEvent;
-import com.fastgrill.api.domain.ImpressionEvent;
+import com.fastgrill.core.shortenurl.domain.ClickEvent;
+import com.fastgrill.core.shortenurl.domain.ImpressionEvent;
 
 public interface TrackingEventProducerPort {
     void send(ImpressionEvent event);
