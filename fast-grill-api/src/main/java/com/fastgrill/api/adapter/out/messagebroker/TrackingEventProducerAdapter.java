@@ -16,10 +16,10 @@ import org.springframework.kafka.core.KafkaTemplate;
 public class TrackingEventProducerAdapter implements TrackingEventProducerPort {
     private final KafkaTemplate<String, Event> kafkaTemplate;
 
-    @Value(value = "${kafka.topic.impression}")
+    @Value(value = "${spring.kafka.topic.impression}")
     private String impressionTopic;
 
-    @Value(value = "${kafka.topic.click}")
+    @Value(value = "${spring.kafka.topic.click}")
     private String clickTopic;
 
     @Override

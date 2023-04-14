@@ -32,6 +32,8 @@ spring:
       impression: fastgrill.impression
       click: fastgrill.click
       conversion: fastgrill.conversion
+    consumer:
+      group-id: fast-grill-consumer-group
 logging:
   level:
     org.hibernate.SQL: debug
